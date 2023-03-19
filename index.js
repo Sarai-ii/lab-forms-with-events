@@ -1,39 +1,34 @@
 console.log("Code your solution!")
-const body = document.querySelector("body");
-const toDoList = document.querySelector("ul");
-const form = document.querySelector("form");
-const textBox = document.querySelector("#textbox");
-const submitButton = document.querySelector("#submit-task");
-const pTag = document.createElement("p");
+const list = document.querySelector("form");
+const resultsList = document.querySelector(".displayItem");
 
-submitButton.value = "Add Task to To-Do List";
+// console.log(list);
+// console.log(resultsList);
 
-form.addEventListener("submit", (event) => {
+list.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    event.preventDefault();
+  const errorElement = document.createElement("p");
+  errorElement.setAttribute("class", "format");
 
-    let newListItems = textBox.value.split("\n");
-    for (let i = 0; i < newListItems.length; i++){
-        const newListItem = document.createElement("li");
-        newListItem.textContent = newListItems[i];
-        toDoList.append(newListItem);
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        newListItem.append(deleteButton);
+  const unOrdered = document.createElement("ul");
+  const listText = document.querySelector("list").value;
 
-        newListItem.addEventListener("click", (event) => {
-            if (newListItem.style.textDecoration === "line-through"){
-                newListItem.style = "none";
-            } else {
-            event.target.style.textDecoration = "line-through";
-            }
-        });
-
-        deleteButton.addEventListener("click", (event) => {
-            newListItem.remove();
-        });
+    if (listText){
+        const newList = document.createElement("li")
+        newList.textContent = listText
+        unOrdered.append(newList)
+    }
+    else {
+        errorElement.textContent = "Please type in textfield";
+        list.after(errorElement);
     }
 
-    form.reset();
-
+  newList.addEventListener("click", () => {
+    newList.style.textDecoration = "line-through";
+    // console.log("I can be clicked");
+ 
+ 
+    // form.reset()
+    });
 });

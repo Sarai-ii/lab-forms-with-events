@@ -1,14 +1,21 @@
-<html>
-    <head>
-      <script defer src="/index.js"></script>
-    </head>
-    <body>
-      <h1> To-Do List</h1>    
-      <form>
-        <textarea id="textbox" name="todo" type="text" required></textarea>
-        <button id="submit-task" name="submit-task" type="submit"> </button>
-      </form>  
-    </body>
-</html>
-<script src="./index.js" defer></script>
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do List</title>
+  <link href="style.css" rel="stylesheet" type="text/cs" />
+  <script defer src="index.js"></script>
 </head>
+<body>
+  <h1>To-Do-List</h1>
+  <form class="user-form">
+  <hr>
+  <input type="text" id="new-ToDo" placeholder="Type your plans" />
+  <button type="submit">Submit</button>
+</form>
+<ul class="displayItem"></ul>
+</body>
+</html>
+
