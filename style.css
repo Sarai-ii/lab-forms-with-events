@@ -1,4 +1,61 @@
-.hidden {
-    display: none;
-  }
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c46fc5;
+    display: inline;
+    font-family: "Montserrat", sans-serif;
+
+} 
+body h1 {
+    text-align: center;
+}
+
+button #submit {
+    color: aqua;
+    font-family: "Montserrat" ;
+    position: relative;
+    right: 200px
+}
+
+fieldset {
+    border: 2px solid rgba(200, 200, 200, 0.5);
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+form {
+    margin-bottom: 50px;
+}
+
+main {
+    margin:0 auto;
+    max-width: 600px;
+}
+
+#instructions-steps {
+    color: antiquewhite;
+
+}
+
+#lists li {
+    font-size: 30px;
+    font-weight: 300;
+    padding-left: 50px;
+} 
+
+#lists ul {
+    list-style-type: square;
+    padding-left: 100px;
+}
+
+#new-todo, #lists {
+    background-color: #fe1984;
+    border: dotted 2px black;
+    border-radius: 1rem;
+    padding: 40px;
+}
+  
+
 

@@ -1,34 +1,52 @@
-console.log("Code your solution!")
 const list = document.querySelector("form");
-const resultsList = document.querySelector(".displayItem");
-
-// console.log(list);
-// console.log(resultsList);
+const unOrdered = document.querySelector("#lists ul"); // accessing the things to do section 
 
 list.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault(); //keeps the webpage from refreshing
 
-  const errorElement = document.createElement("p");
-  errorElement.setAttribute("class", "format");
+    const {todo} = event.target; 
 
-  const unOrdered = document.createElement("ul");
-  const listText = document.querySelector("list").value;
+    if(!todo.value) {
 
-    if (listText){
-        const newList = document.createElement("li")
-        newList.textContent = listText
-        unOrdered.append(newList)
+        const fieldSet = document.querySelector("fieldset");
+        const errorPTag = document.createElement("p");
+        errorPTag.setAttribute("id","error");
+        errorPTag.innerText = "🛑 ERROR!! 🛑" 
+        fieldSet.prepend(errorPTag)
+
+    } else {
+        const resultsList = document.querySelector(".displayItem");
+
+        let inputText = todo.value.split("\n");
+        for (let todoText of inputText){ 
+            if(todoText) {
+                const newListItem = document.createElement("li");
+                const newDiv = document.createElement("span");
+                newDiv.style.paddingRight = "10px";
+                newDiv.innerText = todoText;
+
+                
+                const newDelete = document.createElement("button");
+                newDelete.innerHTML = "REMOVE";
+
+                newListItem.prepend(newDiv);
+                newDiv.after(newDelete);
+
+                newListItem.addEventListener("click",() => { 
+                    if(newListItem.style.textDecoration) {
+                        newListItem.style.textDecoration = "";
+                    } else {
+                        newListItem.style.textDecoration = "line-through solid rgb(0, 0, 0)";
+                    }
+                }); 
+                newDelete.addEventListener("click",() => { 
+                    newListItem.remove();
+                });
+                unOrdered.append(newListItem);
+            }
+        }
+        list.reset();
     }
-    else {
-        errorElement.textContent = "Please type in textfield";
-        list.after(errorElement);
-    }
-
-  newList.addEventListener("click", () => {
-    newList.style.textDecoration = "line-through";
-    // console.log("I can be clicked");
- 
- 
-    // form.reset()
-    });
 });
+
+
